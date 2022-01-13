@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5891644459485525237}
   - component: {fileID: 3946810599934852054}
   - component: {fileID: 5165728417461670323}
-  - component: {fileID: 705156443}
   m_Layer: 0
   m_Name: Square
   m_TagString: Tower
@@ -115,19 +114,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &705156443
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1430740653700785325}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69e9a83da051cbf4ab9c8b4a433376c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 15
 --- !u!1 &1586846372138690022
 GameObject:
   m_ObjectHideFlags: 0
