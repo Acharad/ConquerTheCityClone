@@ -50,6 +50,7 @@ namespace ConquerTheCity.Inputs
         {
             camPosition = gameCamera.ScreenToWorldPoint(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(camPosition, Vector2.zero);
+            lr.positionCount = 2;
             if(Input.GetMouseButtonDown(0))
             {
                 if (hit.collider != null)
@@ -71,8 +72,7 @@ namespace ConquerTheCity.Inputs
             {
                 if (hit1 == true)
                 {
-                    lr.SetPosition(0,_startPos);
-                    lr.SetPosition(1, camPosition);
+                    DrawLine(_startPos, camPosition);
                 }                
             }
             
@@ -89,39 +89,31 @@ namespace ConquerTheCity.Inputs
                 }
                 else
                 {
+                    hit1= false;
                     hit2 = false;
                     //DeletePosition(_endpos);
                     Debug.Log("hit2:" + hit2);
                 }
-            }
-            if(hit1 && hit2)
-            {
-                Debug.Log(hit1);
-                Debug.Log(hit2);
-                DrawLine(_startPos, _endpos);
-                hit1 = false;
-                hit2 = false;
-            }
-            else if (hit1 || hit2)
-            {
-                //DeletePosition(_startPos);
-                //DeletePosition(_endpos);
-                DrawLine(_startPos, _endpos);
-                
-            }
 
+                if(hit1 && hit2)
+                {
+                    DrawLine(_startPos, _endpos);
+                    Debug.Log("draw line hit1,hit2");
+                    hit1 = false;
+                    hit2 = false;
+                }
+                else
+                {
+                    lr.positionCount = 0;
+                    Debug.Log("delete line");
+                }
+            }
         }
 
         private void DrawLine(Vector3 start,Vector3 end)
         {
             lr.SetPosition(0, start);
             lr.SetPosition(1 , end); 
-        }
-        private void DeletePosition(Vector3 position)
-        {
-            position.x = 0f;
-            position.y = 0f;
-            position.z = 0f;
         }
     }   
 }
