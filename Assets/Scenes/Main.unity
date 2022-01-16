@@ -328,8 +328,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 705156443, guid: 8b24323dddaab4e43ada215d9c38767e, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b24323dddaab4e43ada215d9c38767e, type: 3}
 --- !u!224 &211200257 stripped
 RectTransform:
@@ -535,6 +534,8 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Game Camera
   m_TagString: MainCamera
@@ -550,6 +551,21 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
+--- !u!114 &519420030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 171edeeca369b914dabbc4c4b92fe06b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameCamera: {fileID: 519420031}
+  hit1: 0
+  hit2: 0
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -607,18 +623,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &705156442 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1430740653700785325, guid: 8b24323dddaab4e43ada215d9c38767e, type: 3}
-  m_PrefabInstance: {fileID: 211200256}
-  m_PrefabAsset: {fileID: 0}
---- !u!120 &705156443
+--- !u!120 &519420033
 LineRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 705156442}
+  m_GameObject: {fileID: 519420028}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -710,21 +721,6 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!114 &705156447
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 705156442}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 171edeeca369b914dabbc4c4b92fe06b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameCamera: {fileID: 519420031}
-  hit1: 0
-  hit2: 0
 --- !u!1001 &946619015
 PrefabInstance:
   m_ObjectHideFlags: 0

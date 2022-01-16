@@ -13,6 +13,8 @@ namespace ConquerTheCity.Combats
 
         Health _health;
 
+        public int CubeHealth => health;
+
 
         private void IncreaseHealth()
         {
