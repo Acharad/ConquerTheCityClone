@@ -10,6 +10,7 @@ namespace ConquerTheCity.Inputs
     {
         [SerializeField] Camera gameCamera;
         LineController _lineController;
+        DrawPhysicsLine _drawphy;
         LineRenderer lr;
         
         //[SerializeField] float _distance = 0f;
@@ -50,21 +51,21 @@ namespace ConquerTheCity.Inputs
             lr.positionCount = 2;
             if(Input.GetMouseButtonDown(0))
             {
-                if (hit.collider != null)
+                if (hit.collider.gameObject.tag == "Tower")
                 {
                     _firstObject = hit.collider.gameObject;
-                    Debug.Log(hit.collider);
                     _lineController = _firstObject.GetComponent<LineController>();
+                    _drawphy = _firstObject.GetComponent<DrawPhysicsLine>();
                     _startPos = _firstObject.transform.position;
 
                     hit1 = true;
                     //Debug.Log("hit1:" + hit1);
                 }
+
+
                 else
                 {
                     hit1 = false;
-                    //DeletePosition(_startPos);
-                    //Debug.Log("hit1:" + hit1);
                 }
             }
             if(Input.GetMouseButton(0))
@@ -75,7 +76,7 @@ namespace ConquerTheCity.Inputs
                     lr.SetPosition(0, _startPos);
                     lr.SetPosition(1, camPosition);
                 }
-                else if (hit.collider != null)
+                else
                 {
                     Debug.Log(hit.collider.name);
                 }    
@@ -84,25 +85,26 @@ namespace ConquerTheCity.Inputs
 
             if (Input.GetMouseButtonUp(0))
             {
-                if (hit.collider != null)
+                if (hit.collider.gameObject.tag == "Tower")
                 {
                     _secondObject = hit.collider.gameObject;
                     _endpos = _secondObject.transform.position;
-                    //Debug.Log(_endpos);
-                    hit2 = true;
-                    //Debug.Log("hit2:" + hit2);
+                    if( _firstObject != _secondObject)
+                    {
+                        hit2 = true;
+                        Debug.Log("Objeler Farkli");
+                    }
                 }
                 else
                 {
                     hit1= false;
                     hit2 = false;
-                    //Debug.Log("hit2:" + hit2);
                 }
 
                 if(hit1 && hit2)
                 {
                     _lineController.DrawLine(_startPos, _endpos);
-                    //Debug.Log("draw line hit1,hit2");
+                    _drawphy.addColliderToLine(_firstObject, _startPos , _endpos);
                     hit1 = false;
                     hit2 = false;
                     lr.positionCount = 0;
@@ -110,7 +112,6 @@ namespace ConquerTheCity.Inputs
                 else
                 {
                     lr.positionCount = 0;
-                    //Debug.Log("delete line");
                 }
             }
         }

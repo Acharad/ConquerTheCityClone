@@ -9,6 +9,7 @@ namespace ConquerTheCity.Controllers
     public class LineController : MonoBehaviour
     {
         LineRenderer lr;
+        DrawPhysicsLine _drawphy;
 
         [SerializeField] int cubeLineCount = 0;
         [SerializeField] int canDrawCount = 0;
@@ -19,6 +20,7 @@ namespace ConquerTheCity.Controllers
         {
             lr = GetComponent<LineRenderer>();
             _displayHealth = GetComponentInChildren<DisplayHealth>();
+            _drawphy = GetComponent<DrawPhysicsLine>();
         }
 
         private void Start()
@@ -70,17 +72,11 @@ namespace ConquerTheCity.Controllers
             {
                 cubeLineCount = 1;
                 lr.SetPosition(0, start);
-                lr.SetPosition(1, end);   
-                //Debug.Log("Draw Line 1");           
+                lr.SetPosition(1, end);            
             }
         }
 
-        public void HandleLineCount(int positionCount, int position1 , int position2)
-        {
-            lr.positionCount = 2;
-            lr.SetPosition(1, this.transform.position);
-            lr.SetPosition(0, this.transform.position);
-            canDrawCount += 1;
-        }
+
+
     }    
 }

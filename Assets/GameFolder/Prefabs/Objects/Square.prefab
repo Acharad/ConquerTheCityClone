@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5165728417461670323}
   - component: {fileID: 341514240024026215}
   - component: {fileID: 5759919593465751263}
+  - component: {fileID: 894265577}
   m_Layer: 0
   m_Name: Square
   m_TagString: Tower
@@ -228,6 +229,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cubeLineCount: 0
   canDrawCount: 0
+--- !u!114 &894265577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430740653700785325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ff3faca3331ff34995dff0829018ed7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1586846372138690022
 GameObject:
   m_ObjectHideFlags: 0
