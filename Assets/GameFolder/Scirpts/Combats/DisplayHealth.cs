@@ -8,7 +8,7 @@ namespace ConquerTheCity.Combats
     public class DisplayHealth : MonoBehaviour
     {
         [SerializeField] int health = 15;
-        int _delay = 1;
+        [SerializeField] int _delay = 1;
         protected float timer;
 
         Health _health;
@@ -22,7 +22,7 @@ namespace ConquerTheCity.Combats
             
             if(timer >= _delay)
             {
-                health += _delay;
+                health += 1;
                 timer = 0;
             }
         }

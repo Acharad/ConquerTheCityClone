@@ -56,6 +56,7 @@ namespace ConquerTheCity.Controllers
         {
             if(canDrawCount == 3)
             {
+                cubeLineCount = 3;
                 lr.SetPosition(4, start);
                 lr.SetPosition(5, end);
             }
@@ -70,7 +71,7 @@ namespace ConquerTheCity.Controllers
                 cubeLineCount = 1;
                 lr.SetPosition(0, start);
                 lr.SetPosition(1, end);   
-                Debug.Log("Draw Line 1");           
+                //Debug.Log("Draw Line 1");           
             }
         }
 
@@ -81,6 +82,5 @@ namespace ConquerTheCity.Controllers
             lr.SetPosition(0, this.transform.position);
             canDrawCount += 1;
         }
-
     }    
 }

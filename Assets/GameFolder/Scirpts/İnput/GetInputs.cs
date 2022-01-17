@@ -38,7 +38,7 @@ namespace ConquerTheCity.Inputs
 
         private void Start()
         {
-            //lr.enabled = true;
+            lr.enabled = true;
             gameCamera = Camera.main;
             
         }
@@ -53,9 +53,10 @@ namespace ConquerTheCity.Inputs
                 if (hit.collider != null)
                 {
                     _firstObject = hit.collider.gameObject;
+                    Debug.Log(hit.collider);
                     _lineController = _firstObject.GetComponent<LineController>();
                     _startPos = _firstObject.transform.position;
-                    //Debug.Log(_startPos);
+
                     hit1 = true;
                     //Debug.Log("hit1:" + hit1);
                 }
@@ -70,8 +71,14 @@ namespace ConquerTheCity.Inputs
             {
                 if (hit1 == true)
                 {
-                    _lineController.DrawLine(_startPos , camPosition);
-                }                
+                    Debug.Log(hit.collider);
+                    lr.SetPosition(0, _startPos);
+                    lr.SetPosition(1, camPosition);
+                }
+                else if (hit.collider != null)
+                {
+                    Debug.Log(hit.collider.name);
+                }    
             }
             
 
@@ -81,28 +88,29 @@ namespace ConquerTheCity.Inputs
                 {
                     _secondObject = hit.collider.gameObject;
                     _endpos = _secondObject.transform.position;
-                    Debug.Log(_endpos);
+                    //Debug.Log(_endpos);
                     hit2 = true;
-                    Debug.Log("hit2:" + hit2);
+                    //Debug.Log("hit2:" + hit2);
                 }
                 else
                 {
                     hit1= false;
                     hit2 = false;
-                    Debug.Log("hit2:" + hit2);
+                    //Debug.Log("hit2:" + hit2);
                 }
 
                 if(hit1 && hit2)
                 {
                     _lineController.DrawLine(_startPos, _endpos);
-                    Debug.Log("draw line hit1,hit2");
+                    //Debug.Log("draw line hit1,hit2");
                     hit1 = false;
                     hit2 = false;
+                    lr.positionCount = 0;
                 }
                 else
                 {
                     lr.positionCount = 0;
-                    Debug.Log("delete line");
+                    //Debug.Log("delete line");
                 }
             }
         }
