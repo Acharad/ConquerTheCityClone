@@ -8,11 +8,14 @@ namespace ConquerTheCity.Controllers
 {
     public class LineController : MonoBehaviour
     {
+        // Line Controller draw physics line fonksiyonuna taşınacak.
+        
         LineRenderer lr;
         DrawPhysicsLine _drawphy;
 
         [SerializeField] int cubeLineCount = 0;
         [SerializeField] int canDrawCount = 0;
+        public int cubeNumber;
 
         DisplayHealth _displayHealth;
 
@@ -34,22 +37,22 @@ namespace ConquerTheCity.Controllers
             if(_displayHealth.CubeHealth > 30 && cubeLineCount == 2)
             {
                 lr.positionCount = 6;
-                lr.SetPosition(4, this.transform.position);
-                lr.SetPosition(5, this.transform.position);
+                // lr.SetPosition(4, this.transform.position);
+                // lr.SetPosition(5, this.transform.position);
                 canDrawCount = 3;
             }
             else if(_displayHealth.CubeHealth > 20 && cubeLineCount == 1)
             {
                 lr.positionCount = 4;
-                lr.SetPosition(2, this.transform.position);
-                lr.SetPosition(3, this.transform.position);
+                // lr.SetPosition(2, this.transform.position);
+                // lr.SetPosition(3, this.transform.position);
                 canDrawCount = 2;
             }
             else if (_displayHealth.CubeHealth > 0 && cubeLineCount == 0)
             {
                 lr.positionCount = 2;
-                lr.SetPosition(1, this.transform.position);
-                lr.SetPosition(0, this.transform.position);
+                // lr.SetPosition(1, this.transform.position);
+                // lr.SetPosition(0, this.transform.position);
                 canDrawCount = 1;
             }
         }
@@ -58,25 +61,38 @@ namespace ConquerTheCity.Controllers
         {
             if(canDrawCount == 3)
             {
-                cubeLineCount = 3;
+                cubeNumber = 3;
                 lr.SetPosition(4, start);
                 lr.SetPosition(5, end);
             }
             if(canDrawCount == 2)
             {
                 cubeLineCount = 2;
+                cubeNumber = 2;
                 lr.SetPosition(2, start);
                 lr.SetPosition(3, end);
             }
             if(canDrawCount == 1)
             {
                 cubeLineCount = 1;
+                cubeNumber = 1;
                 lr.SetPosition(0, start);
-                lr.SetPosition(1, end);            
+                lr.SetPosition(1, end);
+                          
             }
         }
 
+        public void DestroyLine(GameObject destroyObject)
+        {
+            cubeLineCount -= 1;
+            Destroy(destroyObject);
+        }
 
+        // public void DeleteLinePosition(int count)
+        // {
+        //     lr.SetPosition(count-1, this.transform.position);
+        //     lr.SetPosition(count, this.transform.position);
+        // }
 
     }    
 }

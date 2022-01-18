@@ -229,6 +229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cubeLineCount: 0
   canDrawCount: 0
+  cubeNumber: 0
 --- !u!114 &894265577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -524,4 +525,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 15
-  _delay: 3
+  _delay: 1

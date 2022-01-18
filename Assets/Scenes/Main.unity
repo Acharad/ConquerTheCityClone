@@ -244,6 +244,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Square
       objectReference: {fileID: 0}
+    - target: {fileID: 3321388834761866504, guid: 8b24323dddaab4e43ada215d9c38767e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4098995411972797497, guid: 8b24323dddaab4e43ada215d9c38767e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -347,8 +351,8 @@ GameObject:
   - component: {fileID: 368116770}
   - component: {fileID: 368116769}
   m_Layer: 0
-  m_Name: Square
-  m_TagString: Untagged
+  m_Name: BackGroundSquare
+  m_TagString: Background
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

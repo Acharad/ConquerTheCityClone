@@ -17,6 +17,8 @@ namespace ConquerTheCity.Inputs
 
         private GameObject _firstObject;
         private GameObject _secondObject;
+        private GameObject _destroyObject;
+        private GameObject _destroyObjectParent;
 
         Vector3 _startPos;
         Vector3 _endpos;
@@ -72,13 +74,22 @@ namespace ConquerTheCity.Inputs
             {
                 if (hit1 == true)
                 {
-                    Debug.Log(hit.collider);
+                    //Debug.Log(hit.collider);
                     lr.SetPosition(0, _startPos);
                     lr.SetPosition(1, camPosition);
                 }
                 else
                 {
-                    Debug.Log(hit.collider.name);
+                    Debug.Log(hit.collider.gameObject.name);
+                    if(hit.transform.gameObject.name != "Tower" && hit.transform.gameObject.name != "BackGroundSquare")
+                    {
+                        _destroyObjectParent = hit.transform.parent.gameObject;
+                        _lineController = _destroyObjectParent.GetComponent<LineController>();
+                        _destroyObject = hit.collider.gameObject;
+                        Debug.Log(_destroyObject);  
+
+                        _lineController.DestroyLine(_destroyObject);
+                    }
                 }    
             }
             
@@ -92,7 +103,6 @@ namespace ConquerTheCity.Inputs
                     if( _firstObject != _secondObject)
                     {
                         hit2 = true;
-                        Debug.Log("Objeler Farkli");
                     }
                 }
                 else
@@ -104,7 +114,7 @@ namespace ConquerTheCity.Inputs
                 if(hit1 && hit2)
                 {
                     _lineController.DrawLine(_startPos, _endpos);
-                    _drawphy.addColliderToLine(_firstObject, _startPos , _endpos);
+                    _drawphy.addColliderToLine(_firstObject, _startPos , _endpos, _lineController.cubeNumber);
                     hit1 = false;
                     hit2 = false;
                     lr.positionCount = 0;
