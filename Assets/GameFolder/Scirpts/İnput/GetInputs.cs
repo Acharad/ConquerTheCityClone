@@ -10,7 +10,6 @@ namespace ConquerTheCity.Inputs
     {
         [SerializeField] Camera gameCamera;
         LineController _lineController;
-        DrawPhysicsLine _drawphy;
         LineRenderer lr;
         
         //[SerializeField] float _distance = 0f;
@@ -19,6 +18,7 @@ namespace ConquerTheCity.Inputs
         private GameObject _secondObject;
         private GameObject _destroyObject;
         private GameObject _destroyObjectParent;
+        private GameObject _mainSquareObject;
 
         Vector3 _startPos;
         Vector3 _endpos;
@@ -28,11 +28,6 @@ namespace ConquerTheCity.Inputs
 
         Vector2 camPosition;
 
-        //Input.GetMouseButtonDown(0) ilk tıklama anı
-
-        //if (Input.GetMouseButton(0)) tıklama devam ediyor
-
-        //if (Input.GetMouseButtonUp(0)) tıklama bitti
 
         private void Awake()
         {
@@ -57,9 +52,7 @@ namespace ConquerTheCity.Inputs
                 {
                     _firstObject = hit.collider.gameObject;
                     _lineController = _firstObject.GetComponent<LineController>();
-                    _drawphy = _firstObject.GetComponent<DrawPhysicsLine>();
                     _startPos = _firstObject.transform.position;
-
                     hit1 = true;
                     //Debug.Log("hit1:" + hit1);
                 }
@@ -80,15 +73,18 @@ namespace ConquerTheCity.Inputs
                 }
                 else
                 {
-                    Debug.Log(hit.collider.gameObject.name);
-                    if(hit.transform.gameObject.name != "Tower" && hit.transform.gameObject.name != "BackGroundSquare")
+                    if(hit.transform.gameObject.tag != "Tower" && hit.transform.gameObject.name != "BackGroundSquare")
                     {
+                        _mainSquareObject = hit.transform.parent.gameObject.transform.parent.gameObject;
                         _destroyObjectParent = hit.transform.parent.gameObject;
-                        _lineController = _destroyObjectParent.GetComponent<LineController>();
-                        _destroyObject = hit.collider.gameObject;
-                        Debug.Log(_destroyObject);  
+                        _destroyObject = hit.transform.gameObject;
+                        // Debug.Log(_mainSquareObject);
+                        // Debug.Log(_destroyObjectParent);
+                        // Debug.Log(_destroyObject);
 
-                        _lineController.DestroyLine(_destroyObject);
+                        _lineController = _mainSquareObject.GetComponent<LineController>();
+                        _lineController.ChanceLineCount();
+                        Destroy(_destroyObjectParent);
                     }
                 }    
             }
@@ -113,8 +109,7 @@ namespace ConquerTheCity.Inputs
 
                 if(hit1 && hit2)
                 {
-                    _lineController.DrawLine(_startPos, _endpos);
-                    _drawphy.addColliderToLine(_firstObject, _startPos , _endpos, _lineController.cubeNumber);
+                    _lineController.DrawLine(_firstObject, _startPos, _endpos);
                     hit1 = false;
                     hit2 = false;
                     lr.positionCount = 0;

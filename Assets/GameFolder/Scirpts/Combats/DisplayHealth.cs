@@ -9,6 +9,7 @@ namespace ConquerTheCity.Combats
     {
         [SerializeField] int health = 15;
         [SerializeField] int _delay = 1;
+        
         protected float timer;
 
         Health _health;

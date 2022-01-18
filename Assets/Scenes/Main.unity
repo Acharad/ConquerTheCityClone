@@ -240,6 +240,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1229553085}
     m_Modifications:
+    - target: {fileID: 341514240024026215, guid: 8b24323dddaab4e43ada215d9c38767e, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 341514240024026215, guid: 8b24323dddaab4e43ada215d9c38767e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 1430740653700785325, guid: 8b24323dddaab4e43ada215d9c38767e, type: 3}
       propertyPath: m_Name
       value: Square
@@ -332,7 +340,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 341514240024026215, guid: 8b24323dddaab4e43ada215d9c38767e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8b24323dddaab4e43ada215d9c38767e, type: 3}
 --- !u!224 &211200257 stripped
 RectTransform:
