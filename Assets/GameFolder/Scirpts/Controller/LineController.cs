@@ -49,6 +49,7 @@ namespace ConquerTheCity.Controllers
             {
                 _drawPhysicsLine.createLine(line, startPos, endPos);
                 _drawPhysicsLine.addColliderToLine(startPos, endPos, lineCount+1);
+                _drawPhysicsLine.addSpawnerToLine(endPos);
                 _canDraw = false;
                 lineCount += 1;
             }

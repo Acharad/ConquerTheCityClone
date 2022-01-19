@@ -54,7 +54,6 @@ namespace ConquerTheCity.Inputs
                     _lineController = _firstObject.GetComponent<LineController>();
                     _startPos = _firstObject.transform.position;
                     hit1 = true;
-                    //Debug.Log("hit1:" + hit1);
                 }
 
 
@@ -67,7 +66,6 @@ namespace ConquerTheCity.Inputs
             {
                 if (hit1 == true)
                 {
-                    //Debug.Log(hit.collider);
                     lr.SetPosition(0, _startPos);
                     lr.SetPosition(1, camPosition);
                 }
@@ -78,9 +76,6 @@ namespace ConquerTheCity.Inputs
                         _mainSquareObject = hit.transform.parent.gameObject.transform.parent.gameObject;
                         _destroyObjectParent = hit.transform.parent.gameObject;
                         _destroyObject = hit.transform.gameObject;
-                        // Debug.Log(_mainSquareObject);
-                        // Debug.Log(_destroyObjectParent);
-                        // Debug.Log(_destroyObject);
 
                         _lineController = _mainSquareObject.GetComponent<LineController>();
                         _lineController.ChanceLineCount();
