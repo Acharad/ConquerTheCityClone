@@ -78,6 +78,7 @@ namespace ConquerTheCity.Inputs
                         _destroyObject = hit.transform.gameObject;
 
                         _lineController = _mainSquareObject.GetComponent<LineController>();
+                        // burda bi hata var düzeltilecek.
                         _lineController.ChanceLineCount();
                         Destroy(_destroyObjectParent);
                     }

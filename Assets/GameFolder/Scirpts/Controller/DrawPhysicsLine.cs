@@ -9,7 +9,6 @@ namespace ConquerTheCity.Controllers
     {
         private LineRenderer line;
 
-
         CircleSpawner _circleSpawner;
         // [SerializeField] int cubeLineCount = 0;
 
@@ -52,6 +51,7 @@ namespace ConquerTheCity.Controllers
             _circleSpawner = new GameObject("CircleSpawner").AddComponent<CircleSpawner>();
             _circleSpawner.transform.parent = line.transform;
             _circleSpawner.transform.position = parentObject.transform.position;
+            _circleSpawner.CircleEndPos(endPos);
         }
     }    
 }

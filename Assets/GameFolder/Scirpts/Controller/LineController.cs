@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using ConquerTheCity.Inputs;
 using ConquerTheCity.Spawners;
 using ConquerTheCity.Combats;
+using ConquerTheCity.Move;
 using UnityEngine;
 
 namespace ConquerTheCity.Controllers
@@ -22,6 +23,7 @@ namespace ConquerTheCity.Controllers
 
 
         DisplayHealth _displayHealth;
+        Mover _mover;
 
         private void Awake()
         {
@@ -53,6 +55,8 @@ namespace ConquerTheCity.Controllers
                 _drawPhysicsLine.createLine(line, startPos, endPos);
                 _drawPhysicsLine.addColliderToLine(startPos, endPos, lineCount+1);
                 _drawPhysicsLine.addSpawnerToLine(line, endPos);
+                // _mover = line.GetComponentInChildren<Mover>();
+                // _mover.GetPosition(endPos);
                 _canDraw = false;
                 lineCount += 1;
             }

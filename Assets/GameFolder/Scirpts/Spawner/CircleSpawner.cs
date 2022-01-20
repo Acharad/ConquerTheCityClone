@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using ConquerTheCity.Controllers;
+using ConquerTheCity.Move;
 using UnityEngine;
 
 namespace ConquerTheCity.Spawners
@@ -8,6 +9,13 @@ namespace ConquerTheCity.Spawners
     public class CircleSpawner : MonoBehaviour
     {
         GameObject circle;
+
+        Mover _mover;
+
+        [SerializeField] Vector3 _circleEndPosition;
+
+        public Vector3 CircleEndPosition => _circleEndPosition;
+
 
         [SerializeField] int _delay = 1;
         float timer;
@@ -18,6 +26,7 @@ namespace ConquerTheCity.Spawners
         private void Awake()
         {
             circle = Resources.Load<GameObject>("Prefabs/Objects/Circle");
+            // _mover = GetComponentInChildren<Mover>();
         }
 
         private void Update()
@@ -34,7 +43,7 @@ namespace ConquerTheCity.Spawners
             {
                 timer = 0;
                 canInstantiate = true;
-                Debug.Log("Küre oluşturuluyor");
+                // Debug.Log("Küre oluşturuluyor");
             }
         }
 
@@ -45,9 +54,14 @@ namespace ConquerTheCity.Spawners
                 // circle.transform.position = this.gameObject.transform.position;
                 // circle.transform.parent = this.transform;
                 Instantiate(circle, this.transform);
-
                 canInstantiate = false;
             }
+        }
+
+        public void CircleEndPos(Vector3 position)
+        {
+            _circleEndPosition = position;
+            // _mover.endPos = position;
         }
 
     }    
