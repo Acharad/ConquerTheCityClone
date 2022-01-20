@@ -8,14 +8,16 @@ namespace ConquerTheCity.Controllers
     public class DrawPhysicsLine : MonoBehaviour 
     {
         private LineRenderer line;
+
+
         CircleSpawner _circleSpawner;
         // [SerializeField] int cubeLineCount = 0;
 
         // Following method creates line runtime using Line Renderer component
-        public void createLine(GameObject parent, Vector3 startpos, Vector3 endPos)
+        public void createLine(GameObject parentObject, Vector3 startpos, Vector3 endPos)
         {
             line = new GameObject("Line").AddComponent<LineRenderer>();
-            line.transform.parent = parent.transform;
+            line.transform.parent = parentObject.transform;
             //line.material =  new Material(Shader.Find("Diffuse"));
             line.positionCount = 2;
             line.startColor = Color.green;
@@ -45,11 +47,11 @@ namespace ConquerTheCity.Controllers
             col.transform.Rotate (0, 0, angle);
         }
 
-        public void addSpawnerToLine(Vector3 endPos)
+        public void addSpawnerToLine(GameObject parentObject,Vector3 endPos)
         {
             _circleSpawner = new GameObject("CircleSpawner").AddComponent<CircleSpawner>();
             _circleSpawner.transform.parent = line.transform;
-            _circleSpawner.transform.position = line.transform.parent.gameObject.transform.position;
+            _circleSpawner.transform.position = parentObject.transform.position;
         }
     }    
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using ConquerTheCity.Inputs;
+using ConquerTheCity.Spawners;
 using ConquerTheCity.Combats;
 using UnityEngine;
 
@@ -14,6 +15,8 @@ namespace ConquerTheCity.Controllers
         [SerializeField] bool _canDraw = false;
         DrawPhysicsLine _drawPhysicsLine;
 
+        [SerializeField] GameObject _circle;
+        public GameObject Circle => _circle;
 
         public int lineCount;
 
@@ -49,7 +52,7 @@ namespace ConquerTheCity.Controllers
             {
                 _drawPhysicsLine.createLine(line, startPos, endPos);
                 _drawPhysicsLine.addColliderToLine(startPos, endPos, lineCount+1);
-                _drawPhysicsLine.addSpawnerToLine(endPos);
+                _drawPhysicsLine.addSpawnerToLine(line, endPos);
                 _canDraw = false;
                 lineCount += 1;
             }

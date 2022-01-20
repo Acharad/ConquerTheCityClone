@@ -1,22 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
+using ConquerTheCity.Controllers;
 using UnityEngine;
 
 namespace ConquerTheCity.Spawners
 {
     public class CircleSpawner : MonoBehaviour
     {
-        [SerializeField] GameObject circle;
+        GameObject circle;
+
         [SerializeField] int _delay = 1;
         float timer;
-        Vector3 endPos;
 
         bool canInstantiate;
+
+        
+        private void Awake()
+        {
+            circle = Resources.Load<GameObject>("Prefabs/Objects/Circle");
+        }
 
         private void Update()
         {
             dealayTime();
-            // CreateCircle();
+            CreateCircle();
         }
         
         private void dealayTime()
@@ -31,11 +38,15 @@ namespace ConquerTheCity.Spawners
             }
         }
 
-        public void CreateCircle(Quaternion rotation)
+        public void CreateCircle()
         {
             if(canInstantiate)
             {
-                Instantiate(circle, this.transform.position , rotation);
+                // circle.transform.position = this.gameObject.transform.position;
+                // circle.transform.parent = this.transform;
+                Instantiate(circle, this.transform);
+
+                canInstantiate = false;
             }
         }
 
