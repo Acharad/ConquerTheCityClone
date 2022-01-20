@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using ConquerTheCity.Uis;
+using ConquerTheCity.Controllers;
 using UnityEngine;
 
 namespace ConquerTheCity.Combats
@@ -12,15 +13,34 @@ namespace ConquerTheCity.Combats
         
         protected float timer;
 
+        LineController _lineController;
+
         Health _health;
 
         public int CubeHealth => health;
 
+        private void Awake()
+        {
+            _health = GetComponentInChildren<Health>();
+            _lineController = GetComponent<LineController>();
+        }
 
+        private void Update()
+        {
+            IncreaseHealth();
+            _health.WriteHealth(health);
+        }
+    
         private void IncreaseHealth()
         {
             timer += Time.deltaTime;
-            
+            if(_lineController.HasLine)
+            {
+                if(timer >= _delay)
+                {
+                    timer = 0;
+                }
+            }
             if(timer >= _delay)
             {
                 health += 1;
@@ -28,15 +48,9 @@ namespace ConquerTheCity.Combats
             }
         }
 
-        private void Awake()
+        public void DecreaseHealth()
         {
-            _health = GetComponent<Health>();
-        }
-
-        private void Update()
-        {
-            IncreaseHealth();
-            _health.WriteHealth(health);
+            health -= 1;
         }
     }
 }

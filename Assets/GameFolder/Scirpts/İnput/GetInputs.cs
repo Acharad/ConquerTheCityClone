@@ -71,7 +71,7 @@ namespace ConquerTheCity.Inputs
                 }
                 else
                 {
-                    if(hit.transform.gameObject.tag != "Tower" && hit.transform.gameObject.name != "BackGroundSquare")
+                    if(hit.transform.gameObject.tag != "Tower" && hit.transform.gameObject.name != "BackGroundSquare" && hit.transform.gameObject.tag != "Circle")
                     {
                         _mainSquareObject = hit.transform.parent.gameObject.transform.parent.gameObject;
                         _destroyObjectParent = hit.transform.parent.gameObject;

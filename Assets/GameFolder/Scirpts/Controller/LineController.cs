@@ -11,13 +11,15 @@ namespace ConquerTheCity.Controllers
     public class LineController : MonoBehaviour
     {
         // Line Controller draw physics line fonksiyonuna taşınacak.
-        
-        public int cubeNumber;
+        [SerializeField] bool hasLine = false;
         [SerializeField] bool _canDraw = false;
         DrawPhysicsLine _drawPhysicsLine;
 
         [SerializeField] GameObject _circle;
+
         public GameObject Circle => _circle;
+        public bool HasLine => hasLine;
+
 
         public int lineCount;
 
@@ -32,20 +34,8 @@ namespace ConquerTheCity.Controllers
         }
         private void Update()
         {
-            if(_canDraw) return;
-
-            if(_displayHealth.CubeHealth >= 30 && lineCount == 2)
-            {
-                _canDraw = true;
-            }
-            if(_displayHealth.CubeHealth >= 20 && lineCount == 1)
-            {
-                _canDraw = true;
-            }
-            if(_displayHealth.CubeHealth >= 0 && lineCount == 0)
-            {
-                _canDraw = true;
-            }                  
+            CanDrawLine();
+            HasLineController();
         }
 
         public void DrawLine(GameObject line,Vector3 startPos, Vector3 endPos)
@@ -55,8 +45,6 @@ namespace ConquerTheCity.Controllers
                 _drawPhysicsLine.createLine(line, startPos, endPos);
                 _drawPhysicsLine.addColliderToLine(startPos, endPos, lineCount+1);
                 _drawPhysicsLine.addSpawnerToLine(line, endPos);
-                // _mover = line.GetComponentInChildren<Mover>();
-                // _mover.GetPosition(endPos);
                 _canDraw = false;
                 lineCount += 1;
             }
@@ -70,5 +58,36 @@ namespace ConquerTheCity.Controllers
         {
             lineCount -=1;
         }
+
+        private void CanDrawLine()
+        {
+            if(_canDraw) return;
+
+            if(_displayHealth.CubeHealth >= 30 && lineCount == 2)
+            {
+                _canDraw = true;
+            }
+            if(_displayHealth.CubeHealth >= 20 && lineCount == 1)
+            {
+                _canDraw = true;
+            }
+            if(_displayHealth.CubeHealth >= 0 && lineCount == 0)
+            {
+                _canDraw = true;
+            }       
+        }
+
+        private void HasLineController()
+        {
+            if(lineCount > 0)
+            {
+                hasLine = true;
+            }
+            else
+            {
+                hasLine = false;
+            }
+        }
+
     }    
 }

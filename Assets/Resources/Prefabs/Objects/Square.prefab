@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 5891644459485525237}
   - component: {fileID: 3946810599934852054}
   - component: {fileID: 5165728417461670323}
+  - component: {fileID: 7672863491230813359}
   - component: {fileID: 5759919593465751263}
   - component: {fileID: 894265577}
-  - component: {fileID: 765329814561537967}
+  - component: {fileID: 874010441091920529}
   m_Layer: 0
   m_Name: Square
   m_TagString: Tower
@@ -52,7 +53,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -117,6 +118,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7672863491230813359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430740653700785325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6492af2bb86648e47ae03a038708d698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5759919593465751263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,7 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2225c89e990dce046b01bbde78776fd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubeNumber: 0
+  hasLine: 0
   _canDraw: 0
   _circle: {fileID: 0}
   lineCount: 0
@@ -145,8 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ff3faca3331ff34995dff0829018ed7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Lines: {fileID: 0}
---- !u!114 &765329814561537967
+--- !u!114 &874010441091920529
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -155,9 +167,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1430740653700785325}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8a1096da7ee3a34ea002bef446a5f2f, type: 3}
+  m_Script: {fileID: 11500000, guid: 69e9a83da051cbf4ab9c8b4a433376c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 15
+  _delay: 2
 --- !u!1 &1586846372138690022
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,7 +262,6 @@ GameObject:
   - component: {fileID: 7448637936190500599}
   - component: {fileID: 6421496092656072786}
   - component: {fileID: 907622715}
-  - component: {fileID: 907622710}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -428,17 +441,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94cafa6534242324284d9896677c2293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &907622710
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4402165035653771197}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69e9a83da051cbf4ab9c8b4a433376c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 15
-  _delay: 2
