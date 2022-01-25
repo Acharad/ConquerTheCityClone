@@ -31,10 +31,5 @@ namespace ConquerTheCity.Move
 
             transform.Translate(toTarget * speed * Time.deltaTime);
         }
-
-        // public void GetPosition(Vector3 position)
-        // {
-        //     position = endPos;
-        // }
     }    
 }

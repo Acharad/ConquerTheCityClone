@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5759919593465751263}
   - component: {fileID: 894265577}
   - component: {fileID: 874010441091920529}
+  - component: {fileID: 8953721635167026387}
   m_Layer: 0
   m_Name: Square
   m_TagString: Tower
@@ -172,6 +173,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 15
   _delay: 2
+--- !u!114 &8953721635167026387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430740653700785325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e079a30cfe823e4f977f7b5f6d2ddaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1586846372138690022
 GameObject:
   m_ObjectHideFlags: 0

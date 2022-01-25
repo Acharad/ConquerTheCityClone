@@ -7,6 +7,8 @@ TagManager:
   - Tower
   - Background
   - Circle
+  - Line
+  - LineCollider
   layers:
   - Default
   - TransparentFX

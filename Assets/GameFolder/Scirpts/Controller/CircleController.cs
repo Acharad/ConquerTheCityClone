@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using ConquerTheCity.Combats;
+using ConquerTheCity.Spawners;
 using UnityEngine;
 
 namespace ConquerTheCity.Controllers
@@ -8,12 +9,23 @@ namespace ConquerTheCity.Controllers
     public class CircleController : MonoBehaviour
     {
         GameObject mainObject;
+        GameObject targetObject;
+
+        public GameObject CircleControllerTargetObject => targetObject;
 
         DisplayHealth _displayHealth;
+        SquareController _squareController;
+        CircleSpawner _circleSpawner;
+        CircleController _enemyCircleController;
 
         private void Awake()
         {
-            mainObject = this.gameObject.transform.parent.gameObject.transform.parent.gameObject.transform.parent.gameObject;
+            _squareController = GetComponentInParent<SquareController>();
+            _circleSpawner = GetComponentInParent<CircleSpawner>();
+
+            mainObject = _squareController.SquareMainObject;
+            targetObject = _circleSpawner.TargetGameObject;
+            // Debug.Log(targetObject);
         }
 
 
@@ -21,7 +33,11 @@ namespace ConquerTheCity.Controllers
         {
             if(collider.gameObject.CompareTag("Circle"))
             {
-                Destroy(this.gameObject);
+                _enemyCircleController = collider.gameObject.GetComponent<CircleController>();
+                if(_enemyCircleController.CircleControllerTargetObject == mainObject)
+                {
+                    Destroy(this.gameObject);
+                }
             }
 
             else if(collider.gameObject != mainObject && collider.tag != "LineCollider" && collider.tag != "Background")

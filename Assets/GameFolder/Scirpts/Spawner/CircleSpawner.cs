@@ -13,8 +13,10 @@ namespace ConquerTheCity.Spawners
         Mover _mover;
 
         [SerializeField] Vector3 _circleEndPosition;
+        [SerializeField] GameObject _targetGameObject;
 
         public Vector3 CircleEndPosition => _circleEndPosition;
+        public GameObject TargetGameObject => _targetGameObject;
 
 
         [SerializeField] int _delay = 1;
@@ -43,7 +45,6 @@ namespace ConquerTheCity.Spawners
             {
                 timer = 0;
                 canInstantiate = true;
-                // Debug.Log("Küre oluşturuluyor");
             }
         }
 
@@ -62,6 +63,11 @@ namespace ConquerTheCity.Spawners
         {
             _circleEndPosition = position;
             // _mover.endPos = position;
+        }
+
+        public void TargetObject(GameObject targetGameObject)
+        {
+            _targetGameObject = targetGameObject;
         }
 
     }    

@@ -50,12 +50,13 @@ namespace ConquerTheCity.Controllers
             col.transform.Rotate (0, 0, angle);
         }
 
-        public void addSpawnerToLine(GameObject parentObject,Vector3 endPos)
+        public void addSpawnerToLine(GameObject parentObject,Vector3 endPos, GameObject targetObject)
         {
             _circleSpawner = new GameObject("CircleSpawner").AddComponent<CircleSpawner>();
             _circleSpawner.transform.parent = line.transform;
             _circleSpawner.transform.position = parentObject.transform.position;
             _circleSpawner.CircleEndPos(endPos);
+            _circleSpawner.TargetObject(targetObject);
         }
     }    
 }

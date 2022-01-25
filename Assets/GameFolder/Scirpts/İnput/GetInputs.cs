@@ -105,7 +105,7 @@ namespace ConquerTheCity.Inputs
 
                 if(hit1 && hit2)
                 {
-                    _lineController.DrawLine(_firstObject, _startPos, _endpos);
+                    _lineController.DrawLine(_firstObject, _startPos, _endpos, _secondObject);
                     hit1 = false;
                     hit2 = false;
                     lr.positionCount = 0;

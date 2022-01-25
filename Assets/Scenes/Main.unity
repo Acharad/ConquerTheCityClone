@@ -324,6 +324,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8953721635167026387, guid: 8b24323dddaab4e43ada215d9c38767e, type: 3}
+      propertyPath: isGreen
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b24323dddaab4e43ada215d9c38767e, type: 3}
 --- !u!224 &211200257 stripped
@@ -542,6 +546,10 @@ PrefabInstance:
     - target: {fileID: 7448637936190500599, guid: 8b24323dddaab4e43ada215d9c38767e, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8953721635167026387, guid: 8b24323dddaab4e43ada215d9c38767e, type: 3}
+      propertyPath: isRed
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b24323dddaab4e43ada215d9c38767e, type: 3}
@@ -851,6 +859,10 @@ PrefabInstance:
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 8953721635167026387, guid: 8b24323dddaab4e43ada215d9c38767e, type: 3}
+      propertyPath: isRed
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b24323dddaab4e43ada215d9c38767e, type: 3}
 --- !u!224 &946619016 stripped
@@ -1069,6 +1081,10 @@ PrefabInstance:
     - target: {fileID: 7448637936190500599, guid: 8b24323dddaab4e43ada215d9c38767e, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8953721635167026387, guid: 8b24323dddaab4e43ada215d9c38767e, type: 3}
+      propertyPath: isGreen
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b24323dddaab4e43ada215d9c38767e, type: 3}
@@ -1329,6 +1345,10 @@ PrefabInstance:
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 8953721635167026387, guid: 8b24323dddaab4e43ada215d9c38767e, type: 3}
+      propertyPath: isGreen
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b24323dddaab4e43ada215d9c38767e, type: 3}
 --- !u!224 &1245140520 stripped
@@ -1438,6 +1458,10 @@ PrefabInstance:
     - target: {fileID: 7448637936190500599, guid: 8b24323dddaab4e43ada215d9c38767e, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8953721635167026387, guid: 8b24323dddaab4e43ada215d9c38767e, type: 3}
+      propertyPath: isRed
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b24323dddaab4e43ada215d9c38767e, type: 3}

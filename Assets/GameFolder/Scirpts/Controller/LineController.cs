@@ -38,13 +38,13 @@ namespace ConquerTheCity.Controllers
             HasLineController();
         }
 
-        public void DrawLine(GameObject line,Vector3 startPos, Vector3 endPos)
+        public void DrawLine(GameObject line,Vector3 startPos, Vector3 endPos, GameObject target)
         {
             if(_canDraw)
             {
                 _drawPhysicsLine.createLine(line, startPos, endPos);
                 _drawPhysicsLine.addColliderToLine(startPos, endPos, lineCount+1);
-                _drawPhysicsLine.addSpawnerToLine(line, endPos);
+                _drawPhysicsLine.addSpawnerToLine(line, endPos ,target);
                 _canDraw = false;
                 lineCount += 1;
             }
