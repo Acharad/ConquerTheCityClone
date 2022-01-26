@@ -7,15 +7,19 @@ namespace ConquerTheCity.Controllers
 {
     public class SquareController : MonoBehaviour
     {
+        private GameObject _squareMainObject;
+        public GameObject SquareMainObject => _squareMainObject;
+        [SerializeField] Color mainObjectColor;
+
+        public Color MainObjectColor => mainObjectColor;
+
         TeamColor _teamColor;
 
-        private GameObject _squareMainObject;
-
-        public GameObject SquareMainObject => _squareMainObject;
 
         private void Awake()
         {
             _teamColor = GetComponent<TeamColor>();
+            mainObjectColor = _teamColor.ObjectColor;
             _squareMainObject = this.gameObject;
         }
 

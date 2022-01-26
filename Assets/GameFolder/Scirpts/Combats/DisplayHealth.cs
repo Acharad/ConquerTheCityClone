@@ -48,10 +48,18 @@ namespace ConquerTheCity.Combats
             }
         }
 
-        public void DecreaseHealth()
+        public void ChangeHealth(bool isTeammate)
         {
-            health -= 1;
+            if(isTeammate)
+            {
+                health +=1;
+            }
+            else
+            {
+                health -=1;
+            }
         }
+
     }
 }
 

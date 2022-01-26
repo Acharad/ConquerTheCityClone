@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using ConquerTheCity.Spawners;
+using ConquerTheCity.Controllers;
 using System.Collections;
 
 
@@ -9,16 +10,25 @@ namespace ConquerTheCity.Controllers
     {
         private LineRenderer line;
 
-        CircleSpawner _circleSpawner;
-        // [SerializeField] int cubeLineCount = 0;
+        private GameObject LineObject;
 
-        // Following method creates line runtime using Line Renderer component
-        public void createLine(GameObject parentObject, Vector3 startpos, Vector3 endPos)
+        CircleSpawner _circleSpawner;
+        
+        LineController _lineController;
+
+        private void Awake()
         {
-            line = new GameObject("Line").AddComponent<LineRenderer>();
-            line.transform.parent = parentObject.transform;
+            _lineController = GetComponent<LineController>();
+        }
+
+        public void createLine(GameObject parentObject, Vector3 startpos, Vector3 endPos, int count)
+        {
+            LineObject = new GameObject("Line" + count);
+            LineObject.transform.parent = parentObject.transform;
+            line = new GameObject("LineRenderer").AddComponent<LineRenderer>();
+            line.transform.parent = LineObject.transform;
             line.tag = "Line";
-            //line.material =  new Material(Shader.Find("Diffuse"));
+            line.material =  new Material(Shader.Find("Diffuse"));
             line.positionCount = 2;
             line.startColor = Color.green;
             line.endColor = Color.green;
@@ -28,13 +38,14 @@ namespace ConquerTheCity.Controllers
             line.endWidth = 0.2f;
             line.SetPosition(0, startpos);
             line.SetPosition(1, endPos);
+            _lineController.AddLinesToList(LineObject);
         }       
 
         // Following method adds collider to created line
         public void addColliderToLine(Vector3 startPos, Vector3 endPos, int count)
         {
             BoxCollider2D col = new GameObject("Collider " + count).AddComponent<BoxCollider2D> ();
-            col.transform.parent = line.transform; // Collider is added as child object of line
+            col.transform.parent = LineObject.transform; // Collider is added as child object of line
             col.tag = "LineCollider";
             float lineLength = Vector3.Distance (startPos, endPos); // length of line
             col.size = new Vector3 (lineLength, 0.2f, 1f); // size of collider is set where X is length of line, Y is width of line, Z will be set as per requirement
@@ -53,7 +64,7 @@ namespace ConquerTheCity.Controllers
         public void addSpawnerToLine(GameObject parentObject,Vector3 endPos, GameObject targetObject)
         {
             _circleSpawner = new GameObject("CircleSpawner").AddComponent<CircleSpawner>();
-            _circleSpawner.transform.parent = line.transform;
+            _circleSpawner.transform.parent = LineObject.transform;
             _circleSpawner.transform.position = parentObject.transform.position;
             _circleSpawner.CircleEndPos(endPos);
             _circleSpawner.TargetObject(targetObject);

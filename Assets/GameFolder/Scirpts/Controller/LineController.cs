@@ -11,14 +11,18 @@ namespace ConquerTheCity.Controllers
     public class LineController : MonoBehaviour
     {
         // Line Controller draw physics line fonksiyonuna taşınacak.
-        [SerializeField] bool hasLine = false;
+        bool hasLine = false;
         [SerializeField] bool _canDraw = false;
         DrawPhysicsLine _drawPhysicsLine;
+
 
         [SerializeField] GameObject _circle;
 
         public GameObject Circle => _circle;
         public bool HasLine => hasLine;
+
+        [SerializeField] List<GameObject> Lines;
+        LineRenderer _deletedObjectLr;
 
 
         public int lineCount;
@@ -36,17 +40,18 @@ namespace ConquerTheCity.Controllers
         {
             CanDrawLine();
             HasLineController();
+            DeleteLine();
         }
 
-        public void DrawLine(GameObject line,Vector3 startPos, Vector3 endPos, GameObject target)
+        public void DrawLine(GameObject startObject, Vector3 startPos, Vector3 endPos, GameObject target)
         {
             if(_canDraw)
             {
-                _drawPhysicsLine.createLine(line, startPos, endPos);
-                _drawPhysicsLine.addColliderToLine(startPos, endPos, lineCount+1);
-                _drawPhysicsLine.addSpawnerToLine(line, endPos ,target);
-                _canDraw = false;
                 lineCount += 1;
+                _drawPhysicsLine.createLine(startObject, startPos, endPos, lineCount);
+                _drawPhysicsLine.addColliderToLine(startPos, endPos, lineCount);
+                _drawPhysicsLine.addSpawnerToLine(startObject, endPos ,target);
+                _canDraw = false;
             }
             else
             {
@@ -77,6 +82,28 @@ namespace ConquerTheCity.Controllers
             }       
         }
 
+        private void DeleteLine()
+        {
+            if(_displayHealth.CubeHealth < 30 && lineCount == 3)
+            {
+                Destroy(Lines[2]);
+                Lines.RemoveAt(2);
+                lineCount -= 1;
+            }
+            if(_displayHealth.CubeHealth < 20 && lineCount == 2)
+            {
+                Destroy(Lines[1]);
+                Lines.RemoveAt(1);
+                lineCount -= 1;
+            }
+            if(_displayHealth.CubeHealth < 0 && lineCount == 1 )
+            {
+                Destroy(Lines[0]);
+                Lines.RemoveAt(0);
+                lineCount -= 1;
+            }             
+        }
+
         private void HasLineController()
         {
             if(lineCount > 0)
@@ -87,6 +114,16 @@ namespace ConquerTheCity.Controllers
             {
                 hasLine = false;
             }
+        }
+
+        public void AddLinesToList(GameObject addedObject)
+        {
+            Lines.Add(addedObject);
+        }
+
+        public void DeleteLinesToList(GameObject deletedObject)
+        {
+            Lines.Remove(deletedObject);
         }
 
     }    

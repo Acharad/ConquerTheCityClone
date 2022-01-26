@@ -11,6 +11,7 @@ namespace ConquerTheCity.Inputs
         [SerializeField] Camera gameCamera;
         LineController _lineController;
         LineRenderer lr;
+        LineRenderer _deletedObjectLr;
         
         //[SerializeField] float _distance = 0f;
 
@@ -78,8 +79,10 @@ namespace ConquerTheCity.Inputs
                         _destroyObject = hit.transform.gameObject;
 
                         _lineController = _mainSquareObject.GetComponent<LineController>();
+                        _deletedObjectLr = _destroyObjectParent.GetComponent<LineRenderer>();
                         // burda bi hata var düzeltilecek.
                         _lineController.ChanceLineCount();
+                        _lineController.DeleteLinesToList(_destroyObjectParent);
                         Destroy(_destroyObjectParent);
                     }
                 }    

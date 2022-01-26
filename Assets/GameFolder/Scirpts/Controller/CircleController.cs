@@ -8,7 +8,11 @@ namespace ConquerTheCity.Controllers
 {
     public class CircleController : MonoBehaviour
     {
+        public Color CircleColor;
+        bool _isTeammate;
+
         GameObject mainObject;
+
         GameObject targetObject;
 
         public GameObject CircleControllerTargetObject => targetObject;
@@ -17,14 +21,24 @@ namespace ConquerTheCity.Controllers
         SquareController _squareController;
         CircleSpawner _circleSpawner;
         CircleController _enemyCircleController;
+        SquareController _enemySquareController;
+
+        SpriteRenderer _spriteRenderer;
+
 
         private void Awake()
         {
             _squareController = GetComponentInParent<SquareController>();
             _circleSpawner = GetComponentInParent<CircleSpawner>();
+            _spriteRenderer = GetComponent<SpriteRenderer>();
 
             mainObject = _squareController.SquareMainObject;
+
             targetObject = _circleSpawner.TargetGameObject;
+            CircleColor = _squareController.MainObjectColor;
+            _spriteRenderer.color = CircleColor;
+            
+
             // Debug.Log(targetObject);
         }
 
@@ -43,7 +57,16 @@ namespace ConquerTheCity.Controllers
             else if(collider.gameObject != mainObject && collider.tag != "LineCollider" && collider.tag != "Background")
             {
                 _displayHealth = collider.gameObject.GetComponent<DisplayHealth>();
-                _displayHealth.DecreaseHealth();
+                _enemySquareController = collider.gameObject.GetComponent<SquareController>();
+                if(_enemySquareController.MainObjectColor == CircleColor)
+                {
+                    _isTeammate = true;
+                }
+                else
+                {
+                    _isTeammate = false;
+                }
+                _displayHealth.ChangeHealth(_isTeammate);
                 Destroy(this.gameObject);
                 
             }
