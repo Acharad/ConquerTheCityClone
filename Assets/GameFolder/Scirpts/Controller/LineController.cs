@@ -43,14 +43,14 @@ namespace ConquerTheCity.Controllers
             DeleteLine();
         }
 
-        public void DrawLine(GameObject startObject, Vector3 startPos, Vector3 endPos, GameObject target)
+        public void DrawLine(GameObject startObject, Vector3 startPos, Vector3 endPos, GameObject endObject)
         {
             if(_canDraw)
             {
                 lineCount += 1;
                 _drawPhysicsLine.createLine(startObject, startPos, endPos, lineCount);
-                _drawPhysicsLine.addColliderToLine(startPos, endPos, lineCount);
-                _drawPhysicsLine.addSpawnerToLine(startObject, endPos ,target);
+                _drawPhysicsLine.addColliderToLine(startPos, endPos, lineCount, endObject);
+                _drawPhysicsLine.addSpawnerToLine(startObject, endPos ,endObject);
                 _canDraw = false;
             }
             else

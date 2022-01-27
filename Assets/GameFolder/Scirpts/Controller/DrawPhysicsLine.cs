@@ -9,12 +9,13 @@ namespace ConquerTheCity.Controllers
     public class DrawPhysicsLine : MonoBehaviour 
     {
         private LineRenderer line;
+        Rigidbody2D _rigidBody;
 
         private GameObject LineObject;
 
         CircleSpawner _circleSpawner;
-        
         LineController _lineController;
+        LineColliderController _lineColliderController;
 
         private void Awake()
         {
@@ -42,10 +43,11 @@ namespace ConquerTheCity.Controllers
         }       
 
         // Following method adds collider to created line
-        public void addColliderToLine(Vector3 startPos, Vector3 endPos, int count)
+        public void addColliderToLine(Vector3 startPos, Vector3 endPos, int count, GameObject endObject)
         {
             BoxCollider2D col = new GameObject("Collider " + count).AddComponent<BoxCollider2D> ();
             col.transform.parent = LineObject.transform; // Collider is added as child object of line
+            col.isTrigger = true;
             col.tag = "LineCollider";
             float lineLength = Vector3.Distance (startPos, endPos); // length of line
             col.size = new Vector3 (lineLength, 0.2f, 1f); // size of collider is set where X is length of line, Y is width of line, Z will be set as per requirement
@@ -59,6 +61,11 @@ namespace ConquerTheCity.Controllers
             }
             angle = Mathf.Rad2Deg * Mathf.Atan (angle);
             col.transform.Rotate (0, 0, angle);
+
+            _lineColliderController = col.gameObject.AddComponent<LineColliderController>();
+            _lineColliderController.FindEnemyObject(endObject);
+            _rigidBody = col.gameObject.AddComponent<Rigidbody2D>();
+            _rigidBody.bodyType = RigidbodyType2D.Kinematic;
         }
 
         public void addSpawnerToLine(GameObject parentObject,Vector3 endPos, GameObject targetObject)

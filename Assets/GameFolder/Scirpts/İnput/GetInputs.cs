@@ -78,6 +78,10 @@ namespace ConquerTheCity.Inputs
                         _destroyObjectParent = hit.transform.parent.gameObject;
                         _destroyObject = hit.transform.gameObject;
 
+                        // Debug.Log(_mainSquareObject);
+                        // Debug.Log(_destroyObjectParent);
+                        // Debug.Log(_destroyObject);
+
                         _lineController = _mainSquareObject.GetComponent<LineController>();
                         _deletedObjectLr = _destroyObjectParent.GetComponent<LineRenderer>();
                         // burda bi hata var düzeltilecek.

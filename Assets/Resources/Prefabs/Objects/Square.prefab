@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6492af2bb86648e47ae03a038708d698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainObjectColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &5759919593465751263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,9 +144,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2225c89e990dce046b01bbde78776fd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasLine: 0
   _canDraw: 0
   _circle: {fileID: 0}
+  Lines: []
   lineCount: 0
 --- !u!114 &894265577
 MonoBehaviour:
@@ -185,6 +186,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e079a30cfe823e4f977f7b5f6d2ddaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGreen: 0
+  isRed: 0
 --- !u!1 &1586846372138690022
 GameObject:
   m_ObjectHideFlags: 0
