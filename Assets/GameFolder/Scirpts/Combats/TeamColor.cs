@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using ConquerTheCity.Controllers;
 using UnityEngine;
 
 namespace ConquerTheCity.Combats
@@ -9,20 +10,31 @@ namespace ConquerTheCity.Combats
         [SerializeField] bool isGreen;
         [SerializeField] bool isRed;
 
+        SquareController _squareController;
+
+
         Color objectColor;
 
-        public Color ObjectColor => objectColor;
+        // public Color ObjectColor => objectColor;
+
+        public Color ObjectColor { get ; set; }
 
         private void Awake()
         {
             FindColor();
+            ObjectColor = objectColor;
+            _squareController = GetComponent<SquareController>(); 
         }
 
-        public void SetColor(GameObject Square)
+        public void SetColor()
         {
+            _squareController.SquareMainObject.GetComponent<MeshRenderer>().material.color = ObjectColor;
+        }
 
-            Square.GetComponent<MeshRenderer>().material.color = objectColor;
-
+        public void ChangeColor(Color enemyColor)
+        {
+            _squareController.SquareMainObject.GetComponent<MeshRenderer>().material.color = enemyColor;
+            _squareController.MainObjectColor = enemyColor;
         }
 
         private void FindColor()

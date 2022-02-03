@@ -53,10 +53,6 @@ namespace ConquerTheCity.Controllers
                 _drawPhysicsLine.addSpawnerToLine(startObject, endPos ,endObject);
                 _canDraw = false;
             }
-            else
-            {
-                Debug.Log("Line çizilemez çünkü _canDraw = " + _canDraw);
-            }
         }
 
         public void ChanceLineCount()
@@ -96,7 +92,7 @@ namespace ConquerTheCity.Controllers
                 Lines.RemoveAt(1);
                 lineCount -= 1;
             }
-            if(_displayHealth.CubeHealth < 0 && lineCount == 1 )
+            if(_displayHealth.CubeHealth <= 0 && lineCount == 1 )
             {
                 Destroy(Lines[0]);
                 Lines.RemoveAt(0);

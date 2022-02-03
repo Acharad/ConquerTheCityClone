@@ -99,9 +99,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.0021916628}
   serializedVersion: 2
-  m_Radius: 0.49999997
+  m_Radius: 0.2
 --- !u!114 &1049614230229731526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4105fdf1c41c98e45a680159454cf308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CircleColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!50 &3010092002141741747
 Rigidbody2D:
   serializedVersion: 4

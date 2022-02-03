@@ -1,18 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
+using ConquerTheCity.Controllers;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+namespace ConquerTheCity.Managers
 {
-    // Start is called before the first frame update
-    void Start()
+    public class GameManager : MonoBehaviour
     {
-        
-    }
+        public static GameManager Instance { get; private set;}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        void Awake()
+        {
+            SingeltonThisGameObject();
+        }
+
+        private void SingeltonThisGameObject()
+        {
+            if (Instance == null)
+            {
+                Instance = this;
+                DontDestroyOnLoad(this.gameObject);
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
+        }
+
+        public void SetActiveCanvas(Canvas ActiveCanvas)
+        {
+            Time.timeScale = 0f;
+            ActiveCanvas.gameObject.SetActive(true);
+        }
+
+        public void LoadScene(int sceneNumber)
+        {
+            SceneManager.LoadScene(sceneNumber);
+        }
     }
 }

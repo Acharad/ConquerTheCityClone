@@ -11,7 +11,8 @@ namespace ConquerTheCity.Controllers
         public GameObject SquareMainObject => _squareMainObject;
         [SerializeField] Color mainObjectColor;
 
-        public Color MainObjectColor => mainObjectColor;
+        public Color MainObjectColor { get ; set; }
+
 
         TeamColor _teamColor;
 
@@ -21,11 +22,14 @@ namespace ConquerTheCity.Controllers
             _teamColor = GetComponent<TeamColor>();
             mainObjectColor = _teamColor.ObjectColor;
             _squareMainObject = this.gameObject;
+            MainObjectColor = mainObjectColor;
+        }
+        private void OnEnable()
+        {
+            _teamColor.SetColor();
         }
 
-        private void Update()
-        {
-            _teamColor.SetColor(this.gameObject);
-        }
+
+
     }    
 }

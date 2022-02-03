@@ -9,11 +9,13 @@ namespace ConquerTheCity.Combats
     public class DisplayHealth : MonoBehaviour
     {
         [SerializeField] int health = 15;
-        [SerializeField] int _delay = 1;
+        [SerializeField] float _delay = 1;
+
         
         protected float timer;
 
         LineController _lineController;
+        TeamColor _teamColor;
 
         Health _health;
 
@@ -23,6 +25,7 @@ namespace ConquerTheCity.Combats
         {
             _health = GetComponentInChildren<Health>();
             _lineController = GetComponent<LineController>();
+            _teamColor = GetComponent<TeamColor>();
         }
 
         private void Update()
@@ -48,7 +51,7 @@ namespace ConquerTheCity.Combats
             }
         }
 
-        public void ChangeHealth(bool isTeammate)
+        public void ChangeHealth(bool isTeammate, Color enemyColor)
         {
             if(isTeammate)
             {
@@ -56,10 +59,19 @@ namespace ConquerTheCity.Combats
             }
             else
             {
-                health -=1;
+                if(health > 0)
+                {
+                    health -=1;
+                }
+                else
+                {
+                    // _teamColor.ObjectColor = enemyColor;
+                    _teamColor.ChangeColor(enemyColor);
+                }
             }
         }
 
+        
     }
 }
 

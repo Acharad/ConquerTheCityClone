@@ -58,6 +58,7 @@ namespace ConquerTheCity.Controllers
             {
                 _displayHealth = collider.gameObject.GetComponent<DisplayHealth>();
                 _enemySquareController = collider.gameObject.GetComponent<SquareController>();
+                
                 if(_enemySquareController.MainObjectColor == CircleColor)
                 {
                     _isTeammate = true;
@@ -66,9 +67,8 @@ namespace ConquerTheCity.Controllers
                 {
                     _isTeammate = false;
                 }
-                _displayHealth.ChangeHealth(_isTeammate);
+                _displayHealth.ChangeHealth(_isTeammate, CircleColor);
                 Destroy(this.gameObject);
-                
             }
         }
     }    

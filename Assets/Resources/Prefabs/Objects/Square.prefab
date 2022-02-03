@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 15
-  _delay: 2
+  _delay: 2.5
 --- !u!114 &8953721635167026387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e079a30cfe823e4f977f7b5f6d2ddaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isGreen: 0
+  isGreen: 1
   isRed: 0
 --- !u!1 &1586846372138690022
 GameObject:
